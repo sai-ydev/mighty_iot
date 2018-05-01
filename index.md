@@ -10,6 +10,9 @@ Your workshop kit contains the following components:
 
 1. ESP8266 Node MCU development board
 2. AM2320 Temperature Humidity Sensor 
+3. GUVA-S12SD Analog UV Sensor
+
+
 ```markdown
 Syntax highlighted code block
 
