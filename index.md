@@ -7,9 +7,9 @@ The official documentation for running the MicroPython on the ESP8266 is availab
 
 # Firmware Download
 
-The ESP8266 in the kit comes with the firmware installed on the hardware. For future firmware updates, the latest build of Micropython is available from [here](http://micropython.org/download#esp8266).  
+The ESP8266 in the kit comes with the firmware installed on the hardware. For future firmware updates, the latest build of Micropython is available from [here](http://micropython.org/download#esp8266).  (Todo: Tutorial on installing the firmware)
 
-### Workshop kit contents
+# Workshop kit contents
 
 Your workshop kit contains the following components:
 
@@ -20,28 +20,24 @@ Your workshop kit contains the following components:
 5. Jumper Wires, Resistors
 6. Breadboard
 
+# Requisite Tool Installation on your laptop
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+# Setting up WiFi credentials
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+# Introduction Tutorial - Hello World
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+# Publishing data to the internet 
 
-### Jekyll Themes
+# Interfacing the Temperature/Humidity sensor
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sai-y/micropython_workshop/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+
+# Interfacing the UV sensor
+
+
+
+# Interfacing the VOC sensor
 
