@@ -26,7 +26,7 @@ Your workshop kit contains the following components:
 
 1. The first step is installation of the esptool on your laptop. The esptool is available from the Python package manager. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* The first step is to install Python on your laptop (3.x?) (You can skip this step if you have installed Python on your laptop).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* The first step is to install Python on your laptop (3.x) (You can skip this step if you have installed Python on your laptop).
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Then, esptool can be installed as follows: 
 
 ```
@@ -39,7 +39,42 @@ The WiFi on your ESP8266 is already setup for the workshop.
 
 # Introduction Tutorial - Hello World
 
+In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit): 
+1. ESP8266 Development Board 
+2. 1 x LED
+3. 220 ohm resistor
 
+Connect the LED to the 220 ohm resistor as shown in the figure below: 
+
+To do:![Image](https://github.com/sai-y/circuitpython_workshop/blob/master/images/LED_Blinking_bb.png)
+
+Upon completing the connections, the first step is to test whether the LED has been connected properly. In order to test the connection, import the `machine` module. The `machine` module provides access to the GPIO pins on the ESP8266. 
+
+```
+>>> import machine
+```
+
+The next step is to initialize a GPIO pin. Since we connected our LED to the GPIO Pin 0:
+
+```
+>>> led = machine.Pin(0)
+```
+
+Now, let's determine whether the LED turns on: 
+
+```
+led.on()
+```
+
+If the LED turns on, we can turn it off as:
+
+```
+led.off()
+```
+If your LED doesn't turn on, check the connections (especially, the LED polarity). Now that we have tested the LED, let's make it blink at a 1 second interval: 
+```
+
+```
 # Publishing data to the internet 
 
 # Interfacing the Temperature/Humidity sensor
@@ -51,3 +86,6 @@ The WiFi on your ESP8266 is already setup for the workshop.
 
 # Interfacing the VOC sensor
 
+# Further Resources
+
+Online 
