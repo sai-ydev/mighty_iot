@@ -63,18 +63,34 @@ The next step is to initialize a GPIO pin. Since we connected our LED to the GPI
 Now, let's determine whether the LED turns on: 
 
 ```
-led.on()
+>>> led.on()
 ```
 
 If the LED turns on, we can turn it off as:
 
 ```
-led.off()
+>>> led.off()
 ```
 If your LED doesn't turn on, check the connections (especially, the LED polarity). Now that we have tested the LED, let's make it blink at a 1 second interval: 
 ```
+import machine 
+import time
 
+led = machine.Pin(0, machine.Pin.OUT)
+
+def led_blink():
+    while True:
+        led.on()
+        time.sleep(1)
+        led.off()
+        time.sleep(1)
 ```
+
+In the above example, we are making the LED blink at a 1 second interval. In order to introduce a delay, we are using the `time` module. We are using the `sleep()` to introduce a delay in our program. The `sleep()` method requires an integer as an argument. 
+
+Let's save the file and send it to the ESP8266 (via the WebREPL or ampy). Once the file is uploaded, it could be executed as follows: 
+
+
 # Publishing data to the internet 
 
 # Interfacing the Temperature/Humidity sensor
