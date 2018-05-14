@@ -78,7 +78,7 @@ import time
 
 led = machine.Pin(0, machine.Pin.OUT)
 
-def led_blink():
+def blink():
     while True:
         led.on()
         time.sleep(1)
@@ -88,8 +88,10 @@ def led_blink():
 
 In the above example, we are making the LED blink at a 1 second interval. In order to introduce a delay, we are using the `time` module. We are using the `sleep()` to introduce a delay in our program. The `sleep()` method requires an integer as an argument. 
 
-Let's save the file and send it to the ESP8266 (via the WebREPL or ampy). Once the file is uploaded, it could be executed as follows: 
+Let's save the file (as led.py) and send it to the ESP8266 (via the WebREPL or ampy). Once the file is uploaded, it could be executed as follows: 
 
+import led
+led.blink()
 
 # Publishing data to the internet 
 
