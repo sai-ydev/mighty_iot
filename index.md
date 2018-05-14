@@ -57,7 +57,7 @@ Upon completing the connections, the first step is to test whether the LED has b
 The next step is to initialize a GPIO pin. Since we connected our LED to the GPIO Pin 0:
 
 ```
->>> led = machine.Pin(0)
+>>> led = machine.Pin(0, machine.Pin.OUT)
 ```
 
 Now, let's determine whether the LED turns on: 
