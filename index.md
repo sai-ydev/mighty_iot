@@ -139,7 +139,7 @@ EVENT = voc2_data
 
 
 def publish_values():
-    value1 = (adc.read(0) * 3.3)/102.4
+    value1 = (adc.read() * 3.3)/102.4
     uifttt.trigger(EVENT, KEY, value1=value1)
 
 publish_values()    
@@ -170,8 +170,14 @@ According to the micropython documentation, the script `main.py` is executed rig
 ```
 import dht
 import machine
+import ifttt
 
 d = dht.DHT11(machine.Pin(4))
+
+while True:
+    d.measure()
+    response = ifttt.post(EVENT_NAME, KEY, value1=d.temperature(), value2=d.humidity())
+    time.sleep(30)
 ```
 
 # Interfacing the VOC sensor
