@@ -119,8 +119,10 @@ In this tutorial, we will learn to save the UV index levels to a spreadsheet. Th
 
 The UV sensor needs to be interfaced to the ESP8266 as shown in the figure below:
 
-Format: ![UV Sensor](https://github.com/sai-y/circuitpython_workshop/blob/master/images/UV_Sensor_Sketch_bb.png)
+![]({{"/images/UV_Sensor_Sketch_bb.png"|absolute_url}})
+
 We will be using the [uifttt module](https://github.com/bibene/uifttt) to publish data to the webhook. In order to use the library, we need to send it to ESP8266. Then, we can trigger the webhook as follows:
+
 ```
 import machine 
 import uifttt
