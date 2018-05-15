@@ -53,7 +53,6 @@ In order to test whether things are properly setup, let's perform a basic exerci
 Connect the LED to the 220 ohm resistor as shown in the figure below: 
 
 ![]({{"/images/LED_Blinking_bb.png"|absolute_url}})
-Format: ![Image](https://github.com/sai-y/circuitpython_workshop/blob/master/images/LED_Blinking_bb.png)
 
 Upon completing the connections, the first step is to test whether the LED has been connected properly. In order to test the connection, import the `machine` module. The `machine` module provides access to the GPIO pins on the ESP8266. 
 
@@ -193,6 +192,26 @@ The CCS811 is an indoor air quality sensor that measures the total volatile orga
 
 ![]({{"/images/ccs811_bb.png"|absolute_url}})
 
+Let's put the sensor to test: 
+
+```
+from ccs811 import CCS811
+from machine import Pin, I2C
+import time
+ 
+def main():  
+    i2c = I2C(scl=Pin(5), sda=Pin(4))
+    s = CCS811(i2c)
+    time.sleep(1)
+    while True:
+        if s.data_ready():
+            print('eCO2: %d ppm, TVOC: %d ppb' % (s.eCO2, s.tVOC))
+            time.sleep(1)
+```
+
+The sensor output should look something like shown below: 
+
+![]({{"/images/ccs811_screenshot.png"|absolute_url}})
 
 # Further Resources
 
