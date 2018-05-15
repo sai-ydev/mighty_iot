@@ -27,6 +27,7 @@ Your workshop kit contains the following components:
 1. The first step is installation of the esptool on your laptop. The esptool is available from the Python package manager. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* The first step is to install Python on your laptop (3.x) (You can skip this step if you have installed Python on your laptop).
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Then, esptool can be installed as follows: 
 
 ```
@@ -36,6 +37,9 @@ pip install esptool
 
 The WiFi on your ESP8266 is already setup for the workshop. 
 
+#WeMos Pinout
+
+The image below describes the pinout of the WeMos ESP8266 development. It describes the function of each pin
 
 # Introduction Tutorial - Hello World
 
@@ -142,13 +146,40 @@ publish_values()
 ```
 # Interfacing the Temperature/Humidity sensor
 
-In this section, we will interface a DHT11 sensor to the ESP8266 and we will be using the [dht driver module](https://github.com/micropython/micropython/tree/master/drivers/dht). 
+In this section, we will interface a DHT11 sensor to the ESP8266 and we will be using the [dht driver module](https://github.com/micropython/micropython/tree/master/drivers/dht). In the previous example, we uploaded to the spreadsheet only when the function `publish_values` is called. In this tutorial, we will review writing scripts that uploads to the cloud at regular interval. 
 
 The DHT11 sensor needs to be interfaced to the ESP8266 as shown in the figure below: 
 
-![]({{"/images//DHT11_bb.png"|absolute_url}})
+![]({{"/images/DHT11_bb.png"|absolute_url}})
+
+Once the DHT drivers are uploaded to the ESP8266 module, the temperature and relative humidity can be measured as follows: 
+
+```
+>>> import dht
+>>> import machine
+>>> d = dht.DHT11(machine.Pin(4))
+
+>>> d.measure()
+>>> d.temperature()
+>>> d.humidity()
+```
+
+If there are problems reading the temperature from the sensor, check your connections and ensure that there is a pull-up resistor on the data pin. 
+
+According to the micropython documentation, the script `main.py` is executed right after the board finishes booting up. So, if we 
+```
+import dht
+import machine
+
+d = dht.DHT11(machine.Pin(4))
+```
 
 # Interfacing the VOC sensor
+
+In this 
+
+![]({{"/images/CCS811_bb.png"|absolute_url}})
+
 
 # Further Resources
 
