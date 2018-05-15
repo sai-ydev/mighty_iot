@@ -107,22 +107,44 @@ In this section, we will learn to the interface the GUVA-S12SD Analog UV Sensor.
 >>> adc.read()
 ```
 
-Now, let's find out if there is a fluctuation in UV levels using a UV torch light:
+Now, let's find out if there is a fluctuation in UV index levels using a UV torch light:
 
 ```
 while True:
-    adc.read()
+    print(adc.read() * (3.3/102.4))
 ```
-
-# Interfacing the Temperature/Humidity sensor
-
 # Publishing data to the internet 
 
+In this tutorial, we will learn to save the UV index levels to a spreadsheet. The first step is to get the IFTTT webhook and key (To do: Tutorial on setting up a webhook). 
+
+The UV sensor needs to be interfaced to the ESP8266 as shown in the figure below:
+
+![UV Sensor](https://github.com/sai-y/circuitpython_workshop/blob/master/images/UV_Sensor_Sketch_bb.png)
+We will be using the [uifttt module](https://github.com/bibene/uifttt) to publish data to the webhook. In order to use the library, we need to send it to ESP8266. Then, we can trigger the webhook as follows:
+```
+import machine 
+import uifttt
+import time
+
+adc = machine.ADC(0)
+KEY = IFTTT_KEY
+EVENT = voc2_data
 
 
+def publish_values():
+    value1 = (adc.read(0) * 3.3)/102.4
+    uifttt.trigger(EVENT, KEY, value1=value1)
+
+publish_values()    
+```
+# Interfacing the Temperature/Humidity sensor
+
+In this section, we will interface a DHT11 sensor to the ESP8266 and we will be using the [dht driver module](https://github.com/micropython/micropython/tree/master/drivers/dht). 
+
+The DHT11 sensor needs to be interfaced to the ESP8266 as shown in the figure below: 
 
 # Interfacing the VOC sensor
 
 # Further Resources
 
-Online 
+# Online PyBoard 
