@@ -46,7 +46,7 @@ In order to test whether things are properly setup, let's perform a basic exerci
 
 Connect the LED to the 220 ohm resistor as shown in the figure below: 
 
-![Image](https://github.com/sai-y/circuitpython_workshop/blob/master/images/LED_Blinking_bb.png)
+Format: ![Image](https://github.com/sai-y/circuitpython_workshop/blob/master/images/LED_Blinking_bb.png)
 
 Upon completing the connections, the first step is to test whether the LED has been connected properly. In order to test the connection, import the `machine` module. The `machine` module provides access to the GPIO pins on the ESP8266. 
 
@@ -119,7 +119,7 @@ In this tutorial, we will learn to save the UV index levels to a spreadsheet. Th
 
 The UV sensor needs to be interfaced to the ESP8266 as shown in the figure below:
 
-![UV Sensor](https://github.com/sai-y/circuitpython_workshop/blob/master/images/UV_Sensor_Sketch_bb.png)
+Format: ![UV Sensor](https://github.com/sai-y/circuitpython_workshop/blob/master/images/UV_Sensor_Sketch_bb.png)
 We will be using the [uifttt module](https://github.com/bibene/uifttt) to publish data to the webhook. In order to use the library, we need to send it to ESP8266. Then, we can trigger the webhook as follows:
 ```
 import machine 
