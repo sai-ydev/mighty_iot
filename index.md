@@ -90,15 +90,34 @@ In the above example, we are making the LED blink at a 1 second interval. In ord
 
 Let's save the file (as led.py) and send it to the ESP8266 (via the WebREPL or ampy). Once the file is uploaded, it could be executed as follows: 
 
+```
 import led
 led.blink()
+```
 
-# Publishing data to the internet 
+Now that we have completed the basic example, let's move on to the next section!
+
+# Interfacing the UV sensor
+
+In this section, we will learn to the interface the GUVA-S12SD Analog UV Sensor. The ESP8266 has 1 analog input and we will be interfacing the UV sensor to this analog input. 
+
+```
+>>> import machine
+>>> adc = machine.ADC(0)
+>>> adc.read()
+```
+
+Now, let's find out if there is a fluctuation in UV levels using a UV torch light:
+
+```
+while True:
+    adc.read()
+```
 
 # Interfacing the Temperature/Humidity sensor
 
+# Publishing data to the internet 
 
-# Interfacing the UV sensor
 
 
 
