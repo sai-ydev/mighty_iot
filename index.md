@@ -35,7 +35,7 @@ pip install esptool
 ```
 # Setting up WiFi credentials
 
-The WiFi on your ESP8266 is already setup for the workshop. 
+The WiFi credentials on your ESP8266 is already setup for the workshop. 
 
 #WeMos Pinout
 
@@ -166,7 +166,7 @@ Once the DHT drivers are uploaded to the ESP8266 module, the temperature and rel
 
 If there are problems reading the temperature from the sensor, check your connections and ensure that there is a pull-up resistor on the data pin. 
 
-According to the micropython documentation, the script `main.py` is executed right after the board finishes booting up. So, if we 
+According to the micropython documentation, the script `main.py` is executed right after the board finishes booting up. So, let's write a script that publishes the temperature and relative humidity value to a Google spreadsheet every 30 seconds.  
 ```
 import dht
 import machine
@@ -180,6 +180,11 @@ while True:
     time.sleep(30)
 ```
 
+The script needs to be uploaded to the ESP8266 using [ampy](https://learn.adafruit.com/micropython-basics-load-files-and-run-code/boot-scripts) (You have to install ampy on your laptop):
+
+```
+ampy --port COM11 put dht_test.py /main.py
+``` 
 # Interfacing the VOC sensor
 
 In this 
