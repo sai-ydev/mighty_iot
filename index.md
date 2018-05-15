@@ -146,6 +146,8 @@ In this section, we will interface a DHT11 sensor to the ESP8266 and we will be 
 
 The DHT11 sensor needs to be interfaced to the ESP8266 as shown in the figure below: 
 
+![]({{"/images//DHT11_bb.png"|absolute_url}})
+
 # Interfacing the VOC sensor
 
 # Further Resources
