@@ -191,7 +191,7 @@ ampy --port COM11 put dht_test.py /main.py
 
 The CCS811 is an indoor air quality sensor that measures the total volatile organic compounds (TVOC) and provides equivalent carbon dioxide levels. The CCS811 sensor can be interfaced to the ESP8266 as shown in the figure below:
 
-![]({{"/images/CCS811_bb.png"|absolute_url}})
+![]({{"/images/ccs811_bb.png"|absolute_url}})
 
 
 # Further Resources
