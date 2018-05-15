@@ -46,6 +46,7 @@ In order to test whether things are properly setup, let's perform a basic exerci
 
 Connect the LED to the 220 ohm resistor as shown in the figure below: 
 
+![]({{"/images/LED_Blinking_bb.png"|absolute_url}})
 Format: ![Image](https://github.com/sai-y/circuitpython_workshop/blob/master/images/LED_Blinking_bb.png)
 
 Upon completing the connections, the first step is to test whether the LED has been connected properly. In order to test the connection, import the `machine` module. The `machine` module provides access to the GPIO pins on the ESP8266. 
