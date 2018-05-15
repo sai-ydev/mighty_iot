@@ -213,6 +213,12 @@ The sensor output should look something like shown below:
 
 ![]({{"/images/ccs811_screenshot.png"|absolute_url}})
 
-# Further Resources
+## Challenge
 
-# Online PyBoard 
+Try uploading the VOC sensor data to the cloud
+
+# Online PyBoard
+
+[Micropython PyBoard](http://micropython.org/live/)
+
+# Further Resources
