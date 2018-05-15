@@ -35,7 +35,14 @@ pip install esptool
 ```
 # Setting up WiFi credentials
 
-The WiFi credentials on your ESP8266 is already setup for the workshop. 
+The WiFi credentials on your ESP8266 is already setup for the workshop. But this is how you set it up: 
+
+```
+import network
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.connect('ssid', 'password')
+```
 
 # WeMos Pinout
 
@@ -131,7 +138,7 @@ We will be using the [uifttt module](https://github.com/bibene/uifttt) to publis
 
 ```
 import machine 
-import uifttt
+import ifttt
 import time
 
 adc = machine.ADC(0)
@@ -141,7 +148,7 @@ EVENT = voc2_data
 
 def publish_values():
     value1 = (adc.read() * 3.3)/102.4
-    uifttt.trigger(EVENT, KEY, value1=value1)
+    ifttt.post(EVENT, KEY, value1=value1)
 
 publish_values()    
 ```
