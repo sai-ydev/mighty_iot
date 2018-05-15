@@ -37,9 +37,11 @@ pip install esptool
 
 The WiFi credentials on your ESP8266 is already setup for the workshop. 
 
-#WeMos Pinout
+# WeMos Pinout
 
-The image below describes the pinout of the WeMos ESP8266 development. It describes the function of each pin
+The image below describes the pinout of the WeMos ESP8266 development. It describes the function of each pin:
+
+![]({{"/images/esp8266-wemos-d1-mini-pinout.png"|absolute_url}})
 
 # Introduction Tutorial - Hello World
 
@@ -187,7 +189,7 @@ ampy --port COM11 put dht_test.py /main.py
 ``` 
 # Interfacing the VOC sensor
 
-In this 
+The CCS811 is an indoor air quality sensor that measures the total volatile organic compounds (TVOC) and provides equivalent carbon dioxide levels. The CCS811 sensor can be interfaced to the ESP8266 as shown in the figure below:
 
 ![]({{"/images/CCS811_bb.png"|absolute_url}})
 
