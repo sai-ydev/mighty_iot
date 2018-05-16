@@ -179,6 +179,7 @@ According to the micropython documentation, the script `main.py` is executed rig
 import dht
 import machine
 import ifttt
+import time
 
 d = dht.DHT11(machine.Pin(4))
 
