@@ -1,7 +1,12 @@
-## Citizen Science With MicroPython
+# Citizen Science With MicroPython
 Thanks for signing up for the workshop. We are DIY enthusiasts and big fans of the Micropython world. We put this workshop together to share our knowledge with others. This workshop is by no means a comprehensive guide to Micropython but the contents in the workshop should get you started with collecting simple data points using MicroPython. 
 
-The workshop materials are written using the [MicroPython Documentation for ESP8266](https://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/intro.html). Some of the code snippets used in the workshop were actually used directly 
+The workshop materials are written using the [MicroPython Documentation for ESP8266](https://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/intro.html). Some of the code snippets used in the workshop were actually used directly
+
+# MicroPython vs CircuitPython
+The title of the workshop was Citizen Science with Circuit Python. But we used micropython for the workshop. We used MicroPython because the Circuit Python drivers for the VOC sensor did not work with the ESP8266. This needs some further investigation and we decided to use MicroPython in the interest of saving time. 
+
+MicroPython and CircuitPython are similar and the latter was spun off the former. 
 
 # Documentation
 
@@ -46,7 +51,7 @@ wlan.connect('ssid', 'password')
 
 # WeMos Pinout
 
-The image below describes the pinout of the WeMos ESP8266 development. It describes the function of each pin:
+The board used for the workshop is the WeMos ESP8266 development board. The image below describes the pinout of the WeMos ESP8266 development. It describes the function of each pin:
 
 ![]({{"/images/esp8266-wemos-d1-mini-pinout.png"|absolute_url}})
 
@@ -120,12 +125,16 @@ In this section, we will learn to the interface the GUVA-S12SD Analog UV Sensor.
 >>> adc.read()
 ```
 
-Now, let's find out if there is a fluctuation in UV index levels using a UV torch light:
+Now, let's find out if there is a fluctuation in UV index levels using a **UV torch light** (Insert link to UV Torch Light):
 
 ```
 while True:
     print(adc.read() * (3.3/102.4))
 ```
+
+### Note: 
+UV Torchlights can be harmful to the eyes. Care should be taken while handling a UV torch light. Do not make direct eye contact with the Uv torch light. 
+
 # Publishing data to the internet 
 
 In this tutorial, we will learn to save the UV index levels to a spreadsheet. The first step is to get the IFTTT webhook and key (To do: Tutorial on setting up a webhook). 
@@ -134,7 +143,7 @@ The UV sensor needs to be interfaced to the ESP8266 as shown in the figure below
 
 ![]({{"/images/UV_Sensor_Sketch_bb.png"|absolute_url}})
 
-We will be using the [uifttt module](https://github.com/bibene/uifttt) to publish data to the webhook. In order to use the library, we need to send it to ESP8266. Then, we can trigger the webhook as follows:
+We can trigger the webhook as follows:
 
 ```
 import machine 
@@ -149,9 +158,13 @@ EVENT = voc2_data
 def publish_values():
     value1 = (adc.read() * 3.3)/102.4
     ifttt.post(EVENT, KEY, value1=value1)
-
-publish_values()    
+    
 ```
+
+### `ifttt` module
+
+The ifttt module used in the above code snippet is a wrapper around the `POST` request used to trigger the webhook. The ifttt wrapper is available from **here** (Insert Link).
+
 # Interfacing the Temperature/Humidity sensor
 
 In this section, we will interface a DHT11 sensor to the ESP8266 and we will be using the [dht driver module](https://github.com/micropython/micropython/tree/master/drivers/dht). In the previous example, we uploaded to the spreadsheet only when the function `publish_values` is called. In this tutorial, we will review writing scripts that uploads to the cloud at regular interval. 
