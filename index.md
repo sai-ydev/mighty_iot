@@ -1,16 +1,16 @@
-# Citizen Science With MicroPython
-Thanks for signing up for the workshop. We are DIY enthusiasts and big fans of the Micropython world. We put this workshop together to share our knowledge with others. This workshop is by no means a comprehensive guide to Micropython but the contents in the workshop should get you started with collecting simple data points using MicroPython. 
+# Mighty IoT With MicroPython
+Thanks for signing up for the workshop. We are DIY enthusiasts and big fans of Micropython. We put this workshop together to share our knowledge with others. This workshop is by no means a comprehensive guide to Micropython but the contents in the workshop should get you started with collecting simple data points using MicroPython. 
 
-The workshop materials are written using the [MicroPython Documentation for ESP8266](https://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/intro.html). Some of the code snippets used in the workshop were actually used directly
+The workshop materials are written using the [MicroPython Documentation for ESP32](https://docs.micropython.org/en/latest/esp32/tutorial/intro.html). Some of the code snippets used in the workshop were actually used directly
 
 # MicroPython vs CircuitPython
-The title of the workshop was Citizen Science with Circuit Python. But we used micropython for the workshop. We used MicroPython because the Circuit Python drivers for the VOC sensor did not work with the ESP8266. This needs some further investigation and we decided to use MicroPython in the interest of saving time. 
+The title of the workshop was Citizen Science with Circuit Python. But we used micropython for the workshop. We used MicroPython because the Circuit Python drivers for the VOC sensor did not work with the ESP8266. This needs some further investigation and we decided to use MicroPython in the interest of saving time.
 
-MicroPython and CircuitPython are similar and the latter was spun off the former. 
+MicroPython and CircuitPython are similar and the latter was spun off the former.
 
 # Documentation
 
-The official documentation for running the MicroPython on the ESP8266 is available from [here](https://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/intro.html). The documentation goes into much more detail than the workshop's documentation. 
+The official documentation for running the MicroPython on the ESP8266 is available from [here](https://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/intro.html). The documentation goes into much more detail than the workshop's documentation.
 
 # Firmware Download
 
@@ -21,26 +21,26 @@ The ESP8266 in the kit comes with the firmware installed on the hardware. For fu
 Your workshop kit contains the following components:
 
 1. WeMoS ESP8266 development board
-2. DHT11 Temperature Humidity Sensor 
+2. DHT11 Temperature Humidity Sensor
 3. GUVA-S12SD Analog UV Sensor
-4. CCS811 sensor 
+4. CCS811 sensor
 5. Jumper Wires, Resistors
 6. Breadboard
 
 # Requisite Tool Installation on your laptop
 
-1. The first step is installation of the esptool on your laptop. The esptool is available from the Python package manager. 
+1. The first step is installation of the esptool on your laptop. The esptool is available from the Python package manager.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* The first step is to install Python on your laptop (3.x) (You can skip this step if you have installed Python on your laptop).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Then, esptool can be installed as follows: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Then, esptool can be installed as follows:
 
 ```
 pip install esptool
 ```
 # Setting up WiFi credentials
 
-The WiFi credentials on your ESP8266 is already setup for the workshop. But this is how you set it up: 
+The WiFi credentials on your ESP8266 is already setup for the workshop. But this is how you set it up:
 
 ```
 import network
@@ -57,16 +57,16 @@ The board used for the workshop is the WeMos ESP8266 development board. The imag
 
 # Introduction Tutorial - Hello World
 
-In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit): 
-1. ESP8266 Development Board 
+In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit):
+1. ESP8266 Development Board
 2. 1 x LED
 3. 220 ohm resistor
 
-Connect the LED to the 220 ohm resistor as shown in the figure below: 
+Connect the LED to the 220 ohm resistor as shown in the figure below:
 
 ![]({{"/images/LED_Blinking_bb.png"|absolute_url}})
 
-Upon completing the connections, the first step is to test whether the LED has been connected properly. In order to test the connection, import the `machine` module. The `machine` module provides access to the GPIO pins on the ESP8266. 
+Upon completing the connections, the first step is to test whether the LED has been connected properly. In order to test the connection, import the `machine` module. The `machine` module provides access to the GPIO pins on the ESP8266.
 
 ```
 >>> import machine
@@ -78,7 +78,7 @@ The next step is to initialize a GPIO pin. Since we connected our LED to the GPI
 >>> led = machine.Pin(0, machine.Pin.OUT)
 ```
 
-Now, let's determine whether the LED turns on: 
+Now, let's determine whether the LED turns on:
 
 ```
 >>> led.on()
@@ -89,9 +89,9 @@ If the LED turns on, we can turn it off as:
 ```
 >>> led.off()
 ```
-If your LED doesn't turn on, check the connections (especially, the LED polarity). Now that we have tested the LED, let's make it blink at a 1 second interval: 
+If your LED doesn't turn on, check the connections (especially, the LED polarity). Now that we have tested the LED, let's make it blink at a 1 second interval:
 ```
-import machine 
+import machine
 import time
 
 led = machine.Pin(0, machine.Pin.OUT)
@@ -104,9 +104,9 @@ def blink():
         time.sleep(1)
 ```
 
-In the above example, we are making the LED blink at a 1 second interval. In order to introduce a delay, we are using the `time` module. We are using the `sleep()` to introduce a delay in our program. The `sleep()` method requires an integer as an argument. 
+In the above example, we are making the LED blink at a 1 second interval. In order to introduce a delay, we are using the `time` module. We are using the `sleep()` to introduce a delay in our program. The `sleep()` method requires an integer as an argument.
 
-Let's save the file (as led.py) and send it to the ESP8266 (via the WebREPL or ampy). Once the file is uploaded, it could be executed as follows: 
+Let's save the file (as led.py) and send it to the ESP8266 (via the WebREPL or ampy). Once the file is uploaded, it could be executed as follows:
 
 ```
 import led
@@ -117,7 +117,7 @@ Now that we have completed the basic example, let's move on to the next section!
 
 # Interfacing the UV sensor
 
-In this section, we will learn to the interface the GUVA-S12SD Analog UV Sensor. The ESP8266 has 1 analog input and we will be interfacing the UV sensor to this analog input. 
+In this section, we will learn to the interface the GUVA-S12SD Analog UV Sensor. The ESP8266 has 1 analog input and we will be interfacing the UV sensor to this analog input.
 
 ```
 >>> import machine
@@ -132,12 +132,12 @@ while True:
     print(adc.read() * (3.3/102.4))
 ```
 
-### Note: 
-UV Torchlights can be harmful to the eyes. Care should be taken while handling a UV torch light. Do not make direct eye contact with the Uv torch light. 
+### Note:
+UV Torchlights can be harmful to the eyes. Care should be taken while handling a UV torch light. Do not make direct eye contact with the Uv torch light.
 
-# Publishing data to the internet 
+# Publishing data to the internet
 
-In this tutorial, we will learn to save the UV index levels to a spreadsheet. The first step is to get the IFTTT webhook and key (To do: Tutorial on setting up a webhook). 
+In this tutorial, we will learn to save the UV index levels to a spreadsheet. The first step is to get the IFTTT webhook and key (To do: Tutorial on setting up a webhook).
 
 The UV sensor needs to be interfaced to the ESP8266 as shown in the figure below:
 
@@ -146,7 +146,7 @@ The UV sensor needs to be interfaced to the ESP8266 as shown in the figure below
 We can trigger the webhook as follows:
 
 ```
-import machine 
+import machine
 import ifttt
 import time
 
@@ -158,7 +158,7 @@ EVENT = voc2_data
 def publish_values():
     value1 = (adc.read() * 3.3)/102.4
     ifttt.post(EVENT, KEY, value1=value1)
-    
+
 ```
 
 ### `ifttt` module
@@ -167,13 +167,13 @@ The ifttt module used in the above code snippet is a wrapper around the `POST` r
 
 # Interfacing the Temperature/Humidity sensor
 
-In this section, we will interface a DHT11 sensor to the ESP8266 and we will be using the [dht driver module](https://github.com/micropython/micropython/tree/master/drivers/dht). In the previous example, we uploaded to the spreadsheet only when the function `publish_values` is called. In this tutorial, we will review writing scripts that uploads to the cloud at regular interval. 
+In this section, we will interface a DHT11 sensor to the ESP8266 and we will be using the [dht driver module](https://github.com/micropython/micropython/tree/master/drivers/dht). In the previous example, we uploaded to the spreadsheet only when the function `publish_values` is called. In this tutorial, we will review writing scripts that uploads to the cloud at regular interval.
 
-The DHT11 sensor needs to be interfaced to the ESP8266 as shown in the figure below: 
+The DHT11 sensor needs to be interfaced to the ESP8266 as shown in the figure below:
 
 ![]({{"/images/DHT11_bb.png"|absolute_url}})
 
-Once the DHT drivers are uploaded to the ESP8266 module, the temperature and relative humidity can be measured as follows: 
+Once the DHT drivers are uploaded to the ESP8266 module, the temperature and relative humidity can be measured as follows:
 
 ```
 >>> import dht
@@ -185,7 +185,7 @@ Once the DHT drivers are uploaded to the ESP8266 module, the temperature and rel
 >>> d.humidity()
 ```
 
-If there are problems reading the temperature from the sensor, check your connections and ensure that there is a pull-up resistor on the data pin. 
+If there are problems reading the temperature from the sensor, check your connections and ensure that there is a pull-up resistor on the data pin.
 
 According to the micropython documentation, the script `main.py` is executed right after the board finishes booting up. So, let's write a script that publishes the temperature and relative humidity value to a Google spreadsheet every 30 seconds.  
 ```
@@ -206,20 +206,20 @@ The script needs to be uploaded to the ESP8266 using [ampy](https://learn.adafru
 
 ```
 ampy --port COM11 put dht_test.py /main.py
-``` 
+```
 # Interfacing the VOC sensor
 
 The CCS811 is an indoor air quality sensor that measures the total volatile organic compounds (TVOC) and provides equivalent carbon dioxide levels. The CCS811 sensor can be interfaced to the ESP8266 as shown in the figure below:
 
 ![]({{"/images/ccs811_bb.png"|absolute_url}})
 
-Let's put the sensor to test: 
+Let's put the sensor to test:
 
 ```
 from ccs811 import CCS811
 from machine import Pin, I2C
 import time
- 
+
 def main():  
     i2c = I2C(scl=Pin(5), sda=Pin(4))
     s = CCS811(i2c)
@@ -230,7 +230,7 @@ def main():
             time.sleep(1)
 ```
 
-The sensor output should look something like shown below: 
+The sensor output should look something like shown below:
 
 ![]({{"/images/ccs811_screenshot.png"|absolute_url}})
 
