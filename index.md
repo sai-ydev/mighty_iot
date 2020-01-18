@@ -1,10 +1,10 @@
 # Mighty IoT With MicroPython
-Thanks for signing up for the workshop. We are DIY enthusiasts and big fans of Micropython. We put this workshop together to share our knowledge with others. This workshop is by no means a comprehensive guide to Micropython but the contents in the workshop should get you started with collecting simple data points using MicroPython. 
+Thanks for signing up for the workshop. We are DIY enthusiasts and big fans of Micropython. We put this workshop together to share our knowledge with others. This workshop is by no means a comprehensive guide to Micropython but the contents in the workshop should get you started with collecting simple data points using MicroPython.
 
 The workshop materials are written using the [MicroPython Documentation for ESP32](https://docs.micropython.org/en/latest/esp32/tutorial/intro.html). Some of the code snippets used in the workshop were actually used directly
 
 # MicroPython vs CircuitPython
-The title of the workshop was Citizen Science with Circuit Python. But we used micropython for the workshop. We used MicroPython because the Circuit Python drivers for the VOC sensor did not work with the ESP8266. This needs some further investigation and we decided to use MicroPython in the interest of saving time.
+
 
 MicroPython and CircuitPython are similar and the latter was spun off the former.
 
