@@ -1,7 +1,7 @@
 # Mighty IoT With MicroPython
-Thanks for signing up for the workshop. We are DIY enthusiasts and big fans of Micropython. We put this workshop together to share our knowledge with others. This workshop is by no means a comprehensive guide to Micropython but the contents in the workshop should get you started with collecting simple data points using MicroPython.
+Thanks for signing up for the workshop. We are DIY enthusiasts and big fans of Micropython.
 
-The workshop materials are written using the [MicroPython Documentation for ESP32](https://docs.micropython.org/en/latest/esp32/tutorial/intro.html). Some of the code snippets used in the workshop were actually used directly
+The workshop materials are written using the [MicroPython Documentation for ESP32](https://docs.micropython.org/en/latest/esp32/tutorial/intro.html).
 
 # MicroPython vs CircuitPython
 
@@ -14,16 +14,16 @@ The official documentation for running the MicroPython on the ESP8266 is availab
 
 # Firmware Download
 
-The ESP8266 in the kit comes with the firmware installed on the hardware. For future firmware updates, the latest build of Micropython is available from [here](http://micropython.org/download#esp8266).  (Todo: Tutorial on installing the firmware)
+The ESP32 in the kit comes with the firmware installed on the hardware. For future firmware updates, the latest build of Micropython is available from [here](http://micropython.org/download#esp32).  (Todo: Tutorial on installing the firmware)
 
 # Workshop kit contents
 
 Your workshop kit contains the following components:
 
-1. WeMoS ESP8266 development board
+1. [ESP32 Development Board](https://www.amazon.com/dp/B07Q576VWZ/ref=cm_sw_r_tw_dp_U_x_uHpjEbEAC3P26)
 2. DHT11 Temperature Humidity Sensor
 3. GUVA-S12SD Analog UV Sensor
-4. CCS811 sensor
+4. Neopixel in breadboard form factor
 5. Jumper Wires, Resistors
 6. Breadboard
 
