@@ -23,10 +23,13 @@ Your workshop kit contains the following components:
 1. [ESP32 Development Board](https://www.amazon.com/dp/B07Q576VWZ/ref=cm_sw_r_tw_dp_U_x_uHpjEbEAC3P26)
 2. [AM2320 Digital Temperature and Humidity Sensor](https://www.adafruit.com/product/3721)
 3. [VEML6070 UV Index Sensor Breakout](https://www.adafruit.com/product/2899)
-4. [1xNeopixel in breadboard form factor](https://www.adafruit.com/product/1312)
-5. [1xTactile Button](https://www.sparkfun.com/products/10442)
-6. Jumper Wires, Resistors
-7. Breadboard
+4. [1 x Neopixel in breadboard form factor](https://www.adafruit.com/product/1312)
+5. [1 x Tactile Button](https://www.sparkfun.com/products/10442)
+6. [1 x Trim Potentiometer]()
+7. [1 x Red Led](https://www.digikey.com/product-detail/en/kingbright/WP7113LSRD/754-1267-ND/1747666)
+8. Jumper Wires
+9. Resistors (330 ohms x 1, 4.7K x 2, 10K x 1)
+10. Breadboard
 
 # Requisite Tool Installation on your laptop
 
