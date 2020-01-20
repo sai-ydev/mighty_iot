@@ -63,7 +63,9 @@ Before, we get started with hands-on programming, it is important to familiarize
 
 We will be merely scratching the surface but we have included resources at the end for further learning.
 
-# Introduction Tutorial - Hello World
+# Hello World - Embedded Style!
+
+In the world of embedded devices, a hello world example is blinking an LED.
 
 In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit):
 1. ESP8266 Development Board
@@ -272,6 +274,8 @@ wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 wlan.connect('ssid', 'password')
 ```
+
+# Further Learning Resources
 
 # Troubleshooting
 
