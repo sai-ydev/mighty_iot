@@ -21,8 +21,8 @@ The ESP32 in the kit comes with the firmware installed on the hardware. For futu
 Your workshop kit contains the following components:
 
 1. [ESP32 Development Board](https://www.amazon.com/dp/B07Q576VWZ/ref=cm_sw_r_tw_dp_U_x_uHpjEbEAC3P26)
-2. DHT11 Temperature Humidity Sensor
-3. GUVA-S12SD Analog UV Sensor
+2. [AM2320 Digital Temperature and Humidity Sensor](https://www.adafruit.com/product/3721)
+3. [VEML6070 UV Index Sensor Breakout](https://www.adafruit.com/product/2899)
 4. Neopixel in breadboard form factor
 5. Jumper Wires, Resistors
 6. Breadboard
