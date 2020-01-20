@@ -36,12 +36,9 @@ Your workshop kit contains the following components:
 You can just your text editor. For the sake of convenience, we will be using the [Thonny IDE](thonny.org). It is available for Windows, MAC and Linux Operating Systems. Once you have installed Thonny, launch the IDE and configure it for ESP32 on MicroPython as follows:
 
 1. Go to Run --> Select Interpreter:
-
 ![]({{"/images/thonny_select_interpreter.png"|absolute_url}})
-
 2. Set the interpreter to Micropython (ESP32) and the port to your ESP32's serial port (shown in the snapshot below). If you have a Windows machine and no serial ports were detected, you might have to install its drivers.
-
- ![]({{"/images/thonny_serial_port.png"|absolute_url}})
+![]({{"/images/thonny_serial_port.png"|absolute_url}})
 
 # ESP32 Pinout
 
