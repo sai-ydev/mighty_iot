@@ -57,7 +57,7 @@ It should print <em>Hello World!</em> to the screen.
 
 # ESP32 Pinout
 
-Before, we get started with hands-on programming, it is important to familiarize with the hardware. The board used for the workshop is the [ESP32 Development Board](https://www.amazon.com/dp/B07Q576VWZ/ref=cm_sw_r_tw_dp_U_x_uHpjEbEAC3P26). The image below describes the peripherals of the development kit. It describes the function of each pin:
+Before, we get started with hands-on programming, it is important to familiarize with the hardware. The board used for the workshop is the [ESP32 Development Board](https://www.amazon.com/dp/B07Q576VWZ/ref=cm_sw_r_tw_dp_U_x_uHpjEbEAC3P26). The schematic for the board is available from [here](/docs/esp32_schematic.pdf). The image below describes the peripherals of the development kit. It describes the function of each pin:
 
 ![]({{"/images/ESP32-pinout-mapping.png"|absolute_url}})
 
