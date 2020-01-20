@@ -53,7 +53,7 @@ wlan.connect('ssid', 'password')
 
 The board used for the workshop is the WeMos ESP8266 development board. The image below describes the pinout of the WeMos ESP8266 development. It describes the function of each pin:
 
-![]({{"/images/esp8266-wemos-d1-mini-pinout.png"|absolute_url}})
+![]({{"/images/ESP32-pinout-mapping.png"|absolute_url}})
 
 # Introduction Tutorial - Hello World
 
