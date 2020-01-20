@@ -31,29 +31,15 @@ Your workshop kit contains the following components:
 9. Resistors (330 ohms x 1, 4.7K x 2, 10K x 1)
 10. Breadboard
 
-# Requisite Tool Installation on your laptop
+# Software setup
 
-1. The first step is installation of the esptool on your laptop. The esptool is available from the Python package manager.
+You can just your text editor. For the sake of convenience, we will be using the [Thonny IDE](thonny.org). It is available for Windows, MAC and Linux Operating Systems. Once you have installed Thonny, launch the IDE and configure it for ESP32 on MicroPython as follows:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* The first step is to install Python on your laptop (3.x) (You can skip this step if you have installed Python on your laptop).
+1. Go to Run --> Select Interpreter:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Then, esptool can be installed as follows:
+![]({{"/images/thonny_select_interpreter.png"|absolute_url}})
 
-```
-pip install esptool
-```
-# Setting up WiFi credentials
-
-The WiFi credentials on your ESP8266 is already setup for the workshop. But this is how you set it up:
-
-```
-import network
-wlan = network.WLAN(network.STA_IF)
-wlan.active(True)
-wlan.connect('ssid', 'password')
-```
-
-# WeMos Pinout
+# ESP32 Pinout
 
 The board used for the workshop is the WeMos ESP8266 development board. The image below describes the pinout of the WeMos ESP8266 development. It describes the function of each pin:
 
@@ -247,3 +233,24 @@ Try uploading the VOC sensor data to the cloud
 [Micropython PyBoard](http://micropython.org/live/)
 
 # Further Resources
+# Requisite Tool Installation on your laptop
+
+1. The first step is installation of the esptool on your laptop. The esptool is available from the Python package manager.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* The first step is to install Python on your laptop (3.x) (You can skip this step if you have installed Python on your laptop).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Then, esptool can be installed as follows:
+
+```
+pip install esptool
+```
+# Setting up WiFi credentials
+
+The WiFi credentials on your ESP8266 is already setup for the workshop. But this is how you set it up:
+
+```
+import network
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.connect('ssid', 'password')
+```
