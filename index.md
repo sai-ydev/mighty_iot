@@ -46,7 +46,14 @@ We are all set to get started with programming in Micropython
 
 ## Hello World!
 
+Let's go ahead and print <em>Hello World</em> from the Micropython interpreter:
 
+```
+>>> print("Hello World!")
+```
+It should print <em>Hello World!</em> to the screen.
+
+![]({{"/images/hello_world.png"|absolute_url}})
 
 # ESP32 Pinout
 
