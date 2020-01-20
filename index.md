@@ -39,6 +39,14 @@ You can just your text editor. For the sake of convenience, we will be using the
     ![]({{"/images/thonny_select_interpreter.png"|absolute_url}})
 2. Set the interpreter to Micropython (ESP32) and the port to your ESP32's serial port (shown in the snapshot below). If you have a Windows machine and no serial ports were detected, you might have to install its drivers.
     ![]({{"/images/thonny_serial_port.png"|absolute_url}})
+3. Once the IDE is configured, the MicroPython interpreter on your ESP32 should be ready to use:
+    ![]({{"/images/micropython_interpreter.png"|absolute_url}})
+
+We are all set to get started with programming in Micropython
+
+## Hello World!
+
+
 
 # ESP32 Pinout
 
@@ -255,3 +263,8 @@ wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 wlan.connect('ssid', 'password')
 ```
+
+# Troubleshooting
+
+1. If your MicroPython interpreter is not responding (as shown in the snapshot below), reset your ESP32:
+    ![]({{"/images/micropython_troubleshooting.png"|absolute_url}})
