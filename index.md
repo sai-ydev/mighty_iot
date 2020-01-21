@@ -68,9 +68,9 @@ We will be merely scratching the surface but we have included resources at the e
 In the world of embedded devices, a hello world example is blinking an LED. According to the [schematic](/docs/esp32_schematic.pdf), a blue LED is connected to the GPIO pin 2. We are going to blink an LED with one second interval. We are going to work on this example from the MicroPython interpreter. Let's get started:
 
 1. The first step is to import the <em>Pin</em> class from the machine module. This enables controlling the pins on the ESP32.
-        ```
-        >>> from machine import Pin
-        ```
+  ```
+  >>> from machine import Pin
+  ```
 2. In order to blink with a one second interval, we need to introduce a delay between turning on and turning off the LED. We will be making use of the <em>sleep</em> function from the <em>time</em> module.
         ```
         >>> from time import sleep
