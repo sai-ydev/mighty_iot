@@ -65,7 +65,13 @@ We will be merely scratching the surface but we have included resources at the e
 
 # Hello World - Embedded Style!
 
-In the world of embedded devices, a hello world example is blinking an LED.
+In the world of embedded devices, a hello world example is blinking an LED. According to the [schematic](/docs/esp32_schematic.pdf), a blue LED is connected to the GPIO pin 2. Let's get started:
+
+1. The first step is to import the <em>Pin</em> class from the machine module. This enables controlling the pins on the ESP32.
+        ```
+        >>> from machine import Pin
+        ```
+
 
 In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit):
 1. ESP8266 Development Board
@@ -78,9 +84,7 @@ Connect the LED to the 220 ohm resistor as shown in the figure below:
 
 Upon completing the connections, the first step is to test whether the LED has been connected properly. In order to test the connection, import the `machine` module. The `machine` module provides access to the GPIO pins on the ESP8266.
 
-```
->>> import machine
-```
+
 
 The next step is to initialize a GPIO pin. Since we connected our LED to the GPIO Pin 0:
 
