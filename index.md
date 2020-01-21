@@ -95,6 +95,24 @@ In the world of embedded devices, a hello world example is blinking an LED. Acco
       led.off()
       sleep(1)
   ```
+Make a note of the indentation in the <em> while loop</em>. The LED onboard should be blinking with a one second interval.
+
+## Running a script
+
+In our example, we were working from the MicroPython interpreter. The program will stop running if you hit the reset button or power off the ESP32. Let's write the code sample discussed above as a script. Putting it all together:
+
+```
+from time import sleep
+from machine import Pin
+
+led = Pin(2, Pin.OUT)
+while True:
+   led.on()
+   sleep(1)
+   led.off()
+   sleep(1)
+```  
+
 In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit):
 1. ESP8266 Development Board
 2. 1 x LED
