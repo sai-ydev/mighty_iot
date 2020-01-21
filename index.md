@@ -120,19 +120,20 @@ while True:
 
  ![]({{"/images/save_to.png"|absolute_url}})
 
-3. Save the file as main.py. Any file saved as main.py loads automatically upon reset. Try resetting your device and see if it loads automatically. 
+3. Save the file as main.py. Any file saved as main.py loads automatically upon reset. Try resetting your device and see if it loads automatically.
 
 ![]({{"/images/file_name.png"|absolute_url}})
 
+## Breadboard Blinky
 
-In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit):
-1. ESP8266 Development Board
+You are welcome to skip this example but you get to breadboard a blinky circuit using the ESP32. For this exercise, we will need the following items (provided in the kit):
+1. ESP32 Development Board
 2. 1 x LED
 3. 220 ohm resistor
 
 Connect the LED to the 220 ohm resistor as shown in the figure below:
 
-![]({{"/images/LED_Blinking_bb.png"|absolute_url}})
+![]({{"/images/LED_Blinking.png"|absolute_url}})
 
 Upon completing the connections, the first step is to test whether the LED has been connected properly. In order to test the connection, import the `machine` module. The `machine` module provides access to the GPIO pins on the ESP8266.
 
@@ -141,29 +142,7 @@ If the LED turns on, we can turn it off as:
 ```
 >>> led.off()
 ```
-If your LED doesn't turn on, check the connections (especially, the LED polarity). Now that we have tested the LED, let's make it blink at a 1 second interval:
-```
-import machine
-import time
 
-led = machine.Pin(0, machine.Pin.OUT)
-
-def blink():
-    while True:
-        led.on()
-        time.sleep(1)
-        led.off()
-        time.sleep(1)
-```
-
-In the above example, we are making the LED blink at a 1 second interval. In order to introduce a delay, we are using the `time` module. We are using the `sleep()` to introduce a delay in our program. The `sleep()` method requires an integer as an argument.
-
-Let's save the file (as led.py) and send it to the ESP8266 (via the WebREPL or ampy). Once the file is uploaded, it could be executed as follows:
-
-```
-import led
-led.blink()
-```
 
 Now that we have completed the basic example, let's move on to the next section!
 
@@ -323,3 +302,29 @@ wlan.connect('ssid', 'password')
 
 1. If your MicroPython interpreter is not responding (as shown in the snapshot below), reset your ESP32:
     ![]({{"/images/micropython_troubleshooting.png"|absolute_url}})
+
+# For latter
+
+If your LED doesn't turn on, check the connections (especially, the LED polarity). Now that we have tested the LED, let's make it blink at a 1 second interval:
+```
+import machine
+import time
+
+led = machine.Pin(0, machine.Pin.OUT)
+
+def blink():
+    while True:
+        led.on()
+        time.sleep(1)
+        led.off()
+        time.sleep(1)
+```
+
+In the above example, we are making the LED blink at a 1 second interval. In order to introduce a delay, we are using the `time` module. We are using the `sleep()` to introduce a delay in our program. The `sleep()` method requires an integer as an argument.
+
+Let's save the file (as led.py) and send it to the ESP8266 (via the WebREPL or ampy). Once the file is uploaded, it could be executed as follows:
+
+```
+import led
+led.blink()
+```
