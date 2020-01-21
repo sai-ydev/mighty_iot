@@ -111,7 +111,9 @@ while True:
    sleep(1)
    led.off()
    sleep(1)
-```  
+```
+1. From the toolbar, click on **Run Current Script (F5)**, the green play button shown in the snapshot below:
+ ![]({{"/images/thonny_toolbar.png"|absolute_url}})
 
 In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit):
 1. ESP8266 Development Board
