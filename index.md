@@ -71,19 +71,30 @@ In the world of embedded devices, a hello world example is blinking an LED. Acco
         ```
         >>> from machine import Pin
         ```
-2. The next step is initialize the GPIO pin 2. We need to set it as an output pin:
+2. In order to blink with a one second interval, we need to introduce a delay between turning on and turning off the LED. We will be making use of the <em>sleep</em> function from the <em>time</em> module.
+        ```
+        >>> from time import sleep
+        ```
+3. The next step is initialize the GPIO pin 2. We need to set it as an output pin:
         ```
         >>> led = Pin(2, Pin.OUT)
         ```
-3. We should be able to turn on the LED as follows:
+4. We should be able to turn on the LED as follows:
         ```
         >>> led.on()
         ```
-4. Likewise, the LED could be turned off as follows:
+5. Likewise, the LED could be turned off as follows:
         ```
         >>> led.off()
         ```
-5. In order to introduce a delay, we will be introducing 
+6. The LED turns on/off when you call the <em>on()</em> and <em>off()</em> methods. Let's make it blink using a while loop:
+        ```
+        while True:
+            led.on()
+            sleep(1)
+            led.off()
+            sleep(1)
+        ```
 In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit):
 1. ESP8266 Development Board
 2. 1 x LED
