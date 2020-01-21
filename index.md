@@ -65,7 +65,7 @@ We will be merely scratching the surface but we have included resources at the e
 
 # Hello World - Embedded Style!
 
-In the world of embedded devices, a hello world example is blinking an LED. According to the [schematic](/docs/esp32_schematic.pdf), a blue LED is connected to the GPIO pin 2. We are going to blink an LED with one second interval. Let's get started:
+In the world of embedded devices, a hello world example is blinking an LED. According to the [schematic](/docs/esp32_schematic.pdf), a blue LED is connected to the GPIO pin 2. We are going to blink an LED with one second interval. We are going to work on this example from the MicroPython interpreter. Let's get started:
 
 1. The first step is to import the <em>Pin</em> class from the machine module. This enables controlling the pins on the ESP32.
         ```
@@ -83,7 +83,7 @@ In the world of embedded devices, a hello world example is blinking an LED. Acco
         ```
         >>> led.off()
         ```
-
+5. In order to introduce a delay, we will be introducing 
 In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit):
 1. ESP8266 Development Board
 2. 1 x LED
