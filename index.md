@@ -65,13 +65,24 @@ We will be merely scratching the surface but we have included resources at the e
 
 # Hello World - Embedded Style!
 
-In the world of embedded devices, a hello world example is blinking an LED. According to the [schematic](/docs/esp32_schematic.pdf), a blue LED is connected to the GPIO pin 2. Let's get started:
+In the world of embedded devices, a hello world example is blinking an LED. According to the [schematic](/docs/esp32_schematic.pdf), a blue LED is connected to the GPIO pin 2. We are going to blink an LED with one second interval. Let's get started:
 
 1. The first step is to import the <em>Pin</em> class from the machine module. This enables controlling the pins on the ESP32.
         ```
         >>> from machine import Pin
         ```
-
+2. The next step is initialize the GPIO pin 2. We need to set it as an output pin:
+        ```
+        >>> led = Pin(2, Pin.OUT)
+        ```
+3. We should be able to turn on the LED as follows:
+        ```
+        >>> led.on()
+        ```
+4. Likewise, the LED could be turned off as follows:
+        ```
+        >>> led.off()
+        ```
 
 In order to test whether things are properly setup, let's perform a basic exercise of blinking an LED using the ESP8266. For this exercise, we will need the following items (provided in the kit):
 1. ESP8266 Development Board
@@ -83,20 +94,6 @@ Connect the LED to the 220 ohm resistor as shown in the figure below:
 ![]({{"/images/LED_Blinking_bb.png"|absolute_url}})
 
 Upon completing the connections, the first step is to test whether the LED has been connected properly. In order to test the connection, import the `machine` module. The `machine` module provides access to the GPIO pins on the ESP8266.
-
-
-
-The next step is to initialize a GPIO pin. Since we connected our LED to the GPIO Pin 0:
-
-```
->>> led = machine.Pin(0, machine.Pin.OUT)
-```
-
-Now, let's determine whether the LED turns on:
-
-```
->>> led.on()
-```
 
 If the LED turns on, we can turn it off as:
 
