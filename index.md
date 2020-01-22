@@ -222,12 +222,17 @@ while True:
 
 Your kit comes with a VEML6070 sensor. We will calculate the UV index and publish it to the cloud. We will be making use of the [ThingSpeak platform](https://thingspeak.com/).
 
+**Note:**: The ThingSpeak code samples were built based upon this [tutorial](https://towardsdatascience.com/iot-made-easy-esp-micropython-mqtt-thingspeak-ce05eea27814).
+
 1. The VEML 6070 breakout comes with an I<sup>2</sup>C interface. Connect it to the ESP32 as shown in the figure below. The sensor is powered using 3.3V. The SCL and SDA pins of the VEML6070 are connected to pins 5 and 4 respectively. Due to the open drain configuration of theI<sup>2</sup>C interface, the pins are pulled up using 4.7K resistors.
   ![]({{"/images/veml6070.png"|absolute_url}})
 2. The VEML6070 sensor's drivers are already loaded onto your ESP32. Let's test to make sure that everything works.
     1. The first step is to initialize the I<sup>2</sup>C interface and initialize the VEML6070 drivers.
 
         ```
+        from machine import I2C, Pin
+        import veml6070
+
         i2c = I2C(scl=Pin(5), sda=Pin(4))
         uv = veml6070.VEML6070(i2c)
         ```
@@ -260,35 +265,37 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
         ![]({{"/images/new_channel.png"|absolute_url}})
       8. Make a note of your channel id from the landing page of your channel
         ![]({{"/images/channel_id.png"|absolute_url}})
-      9.
+      9. Make a note of your write API key.
+        ![]({{"/images/api_key.png"|absolute_url}})
+      10. Let's edit our UV sensor code sample to publish data to ThingSpeak. Make sure to use your ThingSpeak channel id and API key.
+        ```
+        from machine import I2C, Pin
+        import veml6070
+        from umqtt.simple import MQTTClient
 
-In this tutorial, we will learn to save the UV index levels to a spreadsheet. The first step is to get the IFTTT webhook and key (To do: Tutorial on setting up a webhook).
+        i2c = I2C(scl=Pin(5), sda=Pin(4))
+        uv = veml6070.VEML6070(i2c)
 
-The UV sensor needs to be interfaced to the ESP8266 as shown in the figure below:
+        SERVER = "mqtt.thingspeak.com"
+        client = MQTTClient("umqtt_client", SERVER)
+
+        topic = "channels/" + CHANNEL_ID + "/publish/" + WRITE_API_KEY
+
+        while True:
+            uv_raw = uv.uv_raw
+            risk_level = uv.get_index(uv_raw)
+            print('Reading: ', uv_raw, ' | Risk Level: ', risk_level)
+            payload = "field1=" + str(uv_raw)
+
+            client.connect()
+            client.publish(topic, payload)
+            client.disconnect()
+            sleep(1)
+
+        ```
 
 
 
-We can trigger the webhook as follows:
-
-```
-import machine
-import ifttt
-import time
-
-adc = machine.ADC(0)
-KEY = IFTTT_KEY
-EVENT = voc2_data
-
-
-def publish_values():
-    value1 = (adc.read() * 3.3)/102.4
-    ifttt.post(EVENT, KEY, value1=value1)
-
-```
-
-### `ifttt` module
-
-The ifttt module used in the above code snippet is a wrapper around the `POST` request used to trigger the webhook. The ifttt wrapper is available from **here** (Insert Link).
 
 # Interfacing the Temperature/Humidity sensor
 
