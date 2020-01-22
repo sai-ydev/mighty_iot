@@ -139,6 +139,31 @@ In case you are not familiar with prototyping with a breadboard, one end of the 
 
 Now that we have completed the basic example, let's move on to the next section!
 
+# Interfacing a Button
+
+In this section, we are going to detect button presses. Connect a button to the ESP32 as shown in the figure below:
+
+![]({{"/images/button_state.png"|absolute_url}})
+
+In the schematic, the GPIO pin 23 is pulled upto 3.3V using a 10K resistor. One end of the momentary press button is connected to the junction of the 10K resistor and pin 23. The other end is connected to ground. Let's write some code!
+
+1. The first step is to import the Pin Class:
+  ```
+  from machine import Pin
+  from time import sleep
+  ```
+2. Initialize pin 23 as an input:
+  ```
+  d23 = Pin(23, Pin.IN)
+  ```
+3. Let's read the pin states using a while loop:
+  ```
+  while True:
+    print(d23.value())
+    sleep(0.1)
+  ```
+Go ahead and try the pressing the button. Is the button state switching between high and low?
+
 # Interfacing the UV sensor
 
 In this section, we will learn to the interface the GUVA-S12SD Analog UV Sensor. The ESP8266 has 1 analog input and we will be interfacing the UV sensor to this analog input.
