@@ -238,8 +238,8 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
           print('Reading: ', uv_raw, ' | Risk Level: ', risk_level)
           sleep(1)
       ```
-### Note:
-UV Torchlights can be harmful to the eyes. Care should be taken while handling a UV torch light. Do not make direct eye contact with the Uv torch light.
+      3. The MicroPython terminals starts printing the UV index values. It is time to test it with a UV torchlight. Did the index values vary?
+      **Note:** UV Torchlights can be harmful to the eyes. Care should be taken while handling a UV torch light. Do not make direct eye contact with the Uv torch light.
 
 
 
