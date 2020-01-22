@@ -255,8 +255,6 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
 
         5. Let's publish the UV index values to [Thingspeak](https://thingspeak.com/). Sign up for a free account.
 
-        6.
-
 In this tutorial, we will learn to save the UV index levels to a spreadsheet. The first step is to get the IFTTT webhook and key (To do: Tutorial on setting up a webhook).
 
 The UV sensor needs to be interfaced to the ESP8266 as shown in the figure below:
