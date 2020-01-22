@@ -164,21 +164,29 @@ In the schematic, the GPIO pin 23 is pulled upto 3.3V using a 10K resistor. One 
   ```
 Go ahead and try the pressing the button. Is the button state switching between high and low?
 
-# Interfacing the UV sensor
+# Analog to Digital Converter (ADC)
 
-In this section, we will learn to the interface the GUVA-S12SD Analog UV Sensor. The ESP8266 has 1 analog input and we will be interfacing the UV sensor to this analog input.
+In this section, we will learn to use the Analog-to-Digital Converter on the ESP32. Currently, the ADC drivers are only for pins 32-39 (Refer to the pinout diagram above). This is due to a conflict with Wi-Fi interface driver. Connect a potentiometer to pin 32 as shown in the figure below:
 
+![]({{"/images/adc.png"|absolute_url}})
+
+**Note:** The snippet for the ADC is from the [Micropython Quick Reference for ESP32](https://docs.micropython.org/en/latest/esp32/quickref.html#adc-analog-to-digital-conversion) documentation.
 ```
->>> import machine
->>> adc = machine.ADC(0)
->>> adc.read()
+from machine import Pin, ADC
+from time import sleep
+adc = ADC(Pin(32))          # create ADC object on ADC pin
+adc.atten(ADC.ATTN_11DB)    # set 11dB input attenuation (voltage range roughly 0.0v - 3.6v)
+adc.width(ADC.WIDTH_12BIT)   # set 12 bit return values (returned range 0-4096)
+
+while True:
+    print(adc.read() * (3.3/4096))
+    sleep(1)
 ```
 
-Now, let's find out if there is a fluctuation in UV index levels using a **UV torch light** (Insert link to UV Torch Light):
-
+Turn the potentiometer knob and see if the voltage varies. 
 ```
 while True:
-    print(adc.read() * (3.3/102.4))
+    print(adc.read() * (3.3/4096))
 ```
 
 ### Note:
