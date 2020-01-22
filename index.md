@@ -183,12 +183,40 @@ while True:
     sleep(1)
 ```
 
-Turn the potentiometer knob and see if the voltage varies. 
+Turn the potentiometer knob and see if the voltage varies.
+
+# Neopixel
+
+Neopixels are RGB LEDs that can be controlled individually. In case you are not familiar with Neopixels, here is a [guide from Adafruit](https://learn.adafruit.com/adafruit-neopixel-uberguide). Neopixels usually are connected in series. In this exercise, we are going to be running some light effects on a single neopixel. Your kit contains a single neopixel.
+
+The neopixel drivers are available with the MicroPython binary. Connect your neopixel as shown in the figure below:
+
+![]({{"/images/neopixel.png"|absolute_url}})
+
+The neopixel can run with 3.3V. A neopixel can be connected in series. Hence they have both in and out pins. In the schematic, the GPIO pin 23 is connected to the In pin. A second neopixel could be connected to the Out pin of the first one. Let's test the neopixel by setting it to red color.
+
+```
+from machine import Pin
+from neopixel import NeoPixel
+
+pin = Pin(23, Pin.OUT) # set gpio pin 23 to output
+np = NeoPixel(pin, 1)  # set the number of pixels to 1
+np[0] = (255, 0, 0)    # set color to red
+np.write()             # write it to neopixel
+```
+It is also possible to create some light effects using neopixels. For example: An RGB fade in/out light effect can be created as follows:
 ```
 while True:
-    print(adc.read() * (3.3/4096))
+    for i in range(0, 4 * 256, 8):
+        if (i // 256) % 2 == 0:
+            val = i & 0xff
+        else:
+            val = 255 - (i & 0xff)
+        np[j] = (val, 0, 0)
+        np.write()
+        time.sleep(0.1)
 ```
-
+**Exercise:** Try writing a light effect where the neopixel fades into different colors in cycles.
 ### Note:
 UV Torchlights can be harmful to the eyes. Care should be taken while handling a UV torch light. Do not make direct eye contact with the Uv torch light.
 
@@ -264,36 +292,6 @@ The script needs to be uploaded to the ESP8266 using [ampy](https://learn.adafru
 ```
 ampy --port COM11 put dht_test.py /main.py
 ```
-# Interfacing the VOC sensor
-
-The CCS811 is an indoor air quality sensor that measures the total volatile organic compounds (TVOC) and provides equivalent carbon dioxide levels. The CCS811 sensor can be interfaced to the ESP8266 as shown in the figure below:
-
-![]({{"/images/ccs811_bb.png"|absolute_url}})
-
-Let's put the sensor to test:
-
-```
-from ccs811 import CCS811
-from machine import Pin, I2C
-import time
-
-def main():  
-    i2c = I2C(scl=Pin(5), sda=Pin(4))
-    s = CCS811(i2c)
-    time.sleep(1)
-    while True:
-        if s.data_ready():
-            print('eCO2: %d ppm, TVOC: %d ppb' % (s.eCO2, s.tVOC))
-            time.sleep(1)
-```
-
-The sensor output should look something like shown below:
-
-![]({{"/images/ccs811_screenshot.png"|absolute_url}})
-
-## Challenge
-
-Try uploading the VOC sensor data to the cloud
 
 # Online PyBoard
 
