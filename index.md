@@ -212,15 +212,21 @@ while True:
             val = i & 0xff
         else:
             val = 255 - (i & 0xff)
-        np[j] = (val, 0, 0)
+        np[i] = (val, 0, 0)
         np.write()
         time.sleep(0.1)
 ```
 **Exercise:** Try writing a light effect where the neopixel fades into different colors in cycles.
 
-# Publishing UV index data to the internet
+# Publishing UV index data to the cloud
 
-![]({{"/images/veml6070.png"|absolute_url}})
+Your kit comes with a VEML6070 sensor. We will calculate the UV index and publish it to the cloud. We will be making use of the [ThingSpeak platform](https://thingspeak.com/).
+
+1. The VEML 6070 breakout comes with an I<sup>2</sup>C interface. Connect it to the ESP32 as shown in the figure below. The sensor is powered using 3.3V. The SCL and SDA pins of the VEML6070 are connected to pins 5 and 4 respectively. Due to the open drain configuration of theI<sup>2</sup>C interface, the pins are pulled up using 4.7K resistors.
+  ![]({{"/images/veml6070.png"|absolute_url}})
+2. The VEML6070 sensor's drivers are already loaded onto your ESP32. Let's test to make sure that everything works.
+  i. The first step is
+
 ### Note:
 UV Torchlights can be harmful to the eyes. Care should be taken while handling a UV torch light. Do not make direct eye contact with the Uv torch light.
 
