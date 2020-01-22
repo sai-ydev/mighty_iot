@@ -256,6 +256,11 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
 
       6. Create a new channel to record your incoming data.
         ![]({{"/images/thingspeak.png"|absolute_url}})
+      7. Assign a name to your channel and rename <em> Field 1 </em> to UV data.
+        ![]({{"/images/new_channel.png"|absolute_url}})
+      8. Make a note of your channel id from the landing page of your channel
+        ![]({{"/images/channel_id.png"|absolute_url}})
+      9.
 
 In this tutorial, we will learn to save the UV index levels to a spreadsheet. The first step is to get the IFTTT webhook and key (To do: Tutorial on setting up a webhook).
 
