@@ -225,8 +225,11 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
 1. The VEML 6070 breakout comes with an I<sup>2</sup>C interface. Connect it to the ESP32 as shown in the figure below. The sensor is powered using 3.3V. The SCL and SDA pins of the VEML6070 are connected to pins 5 and 4 respectively. Due to the open drain configuration of theI<sup>2</sup>C interface, the pins are pulled up using 4.7K resistors.
   ![]({{"/images/veml6070.png"|absolute_url}})
 2. The VEML6070 sensor's drivers are already loaded onto your ESP32. Let's test to make sure that everything works.
-  i. The first step is
-
+    1. The first step is to initialize the I<sup>2</sup>C interface and initialize the VEML6070 drivers.
+    ```
+    i2c = I2C(scl=Pin(5), sda=Pin(4))
+    uv = veml6070.VEML6070(i2c)
+    ```
 ### Note:
 UV Torchlights can be harmful to the eyes. Care should be taken while handling a UV torch light. Do not make direct eye contact with the Uv torch light.
 
