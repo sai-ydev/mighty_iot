@@ -217,16 +217,20 @@ while True:
         time.sleep(0.1)
 ```
 **Exercise:** Try writing a light effect where the neopixel fades into different colors in cycles.
+
+# Publishing UV index data to the internet
+
+![]({{"/images/veml6070.png"|absolute_url}})
 ### Note:
 UV Torchlights can be harmful to the eyes. Care should be taken while handling a UV torch light. Do not make direct eye contact with the Uv torch light.
 
-# Publishing data to the internet
+
 
 In this tutorial, we will learn to save the UV index levels to a spreadsheet. The first step is to get the IFTTT webhook and key (To do: Tutorial on setting up a webhook).
 
 The UV sensor needs to be interfaced to the ESP8266 as shown in the figure below:
 
-![]({{"/images/UV_Sensor_Sketch_bb.png"|absolute_url}})
+
 
 We can trigger the webhook as follows:
 
