@@ -226,20 +226,32 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
   ![]({{"/images/veml6070.png"|absolute_url}})
 2. The VEML6070 sensor's drivers are already loaded onto your ESP32. Let's test to make sure that everything works.
     1. The first step is to initialize the I<sup>2</sup>C interface and initialize the VEML6070 drivers.
-      ```
-      i2c = I2C(scl=Pin(5), sda=Pin(4))
-      uv = veml6070.VEML6070(i2c)
-      ```
+
+        ```
+        i2c = I2C(scl=Pin(5), sda=Pin(4))
+        uv = veml6070.VEML6070(i2c)
+        ```
     2. After initialization, we can print out the UV index values at regular intervals:
-      ```
-      while True:
-          uv_raw = uv.uv_raw
-          risk_level = uv.get_index(uv_raw)
-          print('Reading: ', uv_raw, ' | Risk Level: ', risk_level)
-          sleep(1)
-      ```
+
+        ```
+        while True:
+            uv_raw = uv.uv_raw
+            risk_level = uv.get_index(uv_raw)
+            print('Reading: ', uv_raw, ' | Risk Level: ', risk_level)
+            sleep(1)
+        ```
+
       3. The MicroPython terminals starts printing the UV index values. It is time to test it with a UV torchlight. Did the index values vary?
-      **Note:** UV Torchlights can be harmful to the eyes. Care should be taken while handling it and do not make direct contact.
+      **Note:** <em>UV Torchlights can be harmful to the eyes. Care should be taken while handling it and do not make direct contact.</em>
+
+      4. Your ESP32 board is already connected to the internet. You can follow the network connection instructions from here. You can verify using the code snippet below. It should print out the IP address:
+
+        ```
+        >>> import network
+        >>> wlan = network.WLAN(network.STA_IF)
+        >>> wlan.ifconfig()
+        ('192.168.86.34', '255.255.255.0', '192.168.86.1', '192.168.86.1')
+        ```
 
 
 
