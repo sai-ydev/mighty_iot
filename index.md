@@ -245,12 +245,12 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
       **Note:** <em>UV Torchlights can be harmful to the eyes. Care should be taken while handling it and do not make direct contact.</em>
 
       4. Your ESP32 board is already connected to the internet. You can follow the network connection instructions from here. You can verify using the code snippet below. It should print out the IP address:
-        ```
-        >>> import network
-        >>> wlan = network.WLAN(network.STA_IF)
-        >>> wlan.ifconfig()
-        ('192.168.86.34', '255.255.255.0', '192.168.86.1', '192.168.86.1')
-        ```
+          ```
+          >>> import network
+          >>> wlan = network.WLAN(network.STA_IF)
+          >>> wlan.ifconfig()
+          ('192.168.86.34', '255.255.255.0', '192.168.86.1', '192.168.86.1')
+          ```
 
       5. Let's publish the UV index values to [Thingspeak](https://thingspeak.com/). Sign up for a free account.
 
