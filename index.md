@@ -131,18 +131,11 @@ You are welcome to skip this example but you get to breadboard a blinky circuit 
 2. 1 x LED
 3. 220 ohm resistor
 
-Connect the LED to the 220 ohm resistor as shown in the figure below:
+Connect the LED to GPIO pin 23 using a 220 ohm resistor (to limit current) as shown in the figure below:
 
 ![]({{"/images/LED_Blinking.png"|absolute_url}})
 
-Upon completing the connections, the first step is to test whether the LED has been connected properly. In order to test the connection, import the `machine` module. The `machine` module provides access to the GPIO pins on the ESP8266.
-
-If the LED turns on, we can turn it off as:
-
-```
->>> led.off()
-```
-
+In case you are not familiar with prototyping with a breadboard, one end of the 220 ohm resistor is connected to GPIO pin 23. The other end is connected to the anode of the LED. The cathode is connected to ground.
 
 Now that we have completed the basic example, let's move on to the next section!
 
