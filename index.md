@@ -230,6 +230,7 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
     1. The first step is to initialize the I<sup>2</sup>C interface and initialize the VEML6070 drivers.
 
         ```
+        from time import sleep
         from machine import I2C, Pin
         import veml6070
 
@@ -272,12 +273,16 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
         from machine import I2C, Pin
         import veml6070
         from umqtt.simple import MQTTClient
+        from time import sleep
 
         i2c = I2C(scl=Pin(5), sda=Pin(4))
         uv = veml6070.VEML6070(i2c)
 
         SERVER = "mqtt.thingspeak.com"
         client = MQTTClient("umqtt_client", SERVER)
+
+        CHANNEL_ID = ""
+        WRITE_API_KEY = ""
 
         topic = "channels/" + CHANNEL_ID + "/publish/" + WRITE_API_KEY
 
@@ -287,10 +292,21 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
             print('Reading: ', uv_raw, ' | Risk Level: ', risk_level)
             payload = "field1=" + str(uv_raw)
 
-            client.connect()
-            client.publish(topic, payload)
-            client.disconnect()
-            sleep(1)
+            try:
+              client.connect()
+            except:
+              pass
+
+            try:
+              client.publish(topic, payload)
+            except e:
+              print(e)
+
+            try:
+              client.disconnect()
+            except e:
+              print(e)
+            sleep(10)
 
         ```
 
