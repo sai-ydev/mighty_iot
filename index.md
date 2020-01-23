@@ -320,67 +320,29 @@ In this section, we will interface an [AM2320 sensor](https://akizukidenshi.com/
 
 ![]({{"/images/AM2320_bb.png"|absolute_url}})
 
-Once the DHT drivers are uploaded to the ESP8266 module, the temperature and relative humidity can be measured as follows:
+The AM2320 drivers are loaded onto your ESP32. Let's take it for a spin:
 
 ```
->>> import dht
->>> import machine
->>> d = dht.DHT11(machine.Pin(4))
-
->>> d.measure()
->>> d.temperature()
->>> d.humidity()
+>>> import am2320
+>>> import time
+>>> from machine import I2C, Pin
+>>> i2c = I2C(scl=Pin(5), sda=Pin(4), freq=100000)
+>>> sensor = am2320.AM2320(i2c)
+>>> while True:
+      sensor.measure()
+      print(sensor.temperature())
+      print(sensor.humidity())
+      time.sleep(4)
 ```
 
-If there are problems reading the temperature from the sensor, check your connections and ensure that there is a pull-up resistor on the data pin.
-
-According to the micropython documentation, the script `main.py` is executed right after the board finishes booting up. So, let's write a script that publishes the temperature and relative humidity value to a Google spreadsheet every 30 seconds.  
-```
-import dht
-import machine
-import ifttt
-import time
-
-d = dht.DHT11(machine.Pin(4))
-
-while True:
-    d.measure()
-    response = ifttt.post(EVENT_NAME, KEY, value1=d.temperature(), value2=d.humidity())
-    time.sleep(30)
-```
-
-The script needs to be uploaded to the ESP8266 using [ampy](https://learn.adafruit.com/micropython-basics-load-files-and-run-code/boot-scripts) (You have to install ampy on your laptop):
-
-```
-ampy --port COM11 put dht_test.py /main.py
-```
+If there are problems reading the temperature from the sensor, check your connections and ensure that there is a pull-up resistor on the clock and data pins.
 
 # Online PyBoard
 
 [Micropython PyBoard](http://micropython.org/live/)
 
-# Further Resources
-# Requisite Tool Installation on your laptop
+# WebREPL
 
-1. The first step is installation of the esptool on your laptop. The esptool is available from the Python package manager.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* The first step is to install Python on your laptop (3.x) (You can skip this step if you have installed Python on your laptop).
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Then, esptool can be installed as follows:
-
-```
-pip install esptool
-```
-# Setting up WiFi credentials
-
-The WiFi credentials on your ESP8266 is already setup for the workshop. But this is how you set it up:
-
-```
-import network
-wlan = network.WLAN(network.STA_IF)
-wlan.active(True)
-wlan.connect('ssid', 'password')
-```
 
 # Further Learning Resources
 
@@ -388,29 +350,3 @@ wlan.connect('ssid', 'password')
 
 1. If your MicroPython interpreter is not responding (as shown in the snapshot below), reset your ESP32:
     ![]({{"/images/micropython_troubleshooting.png"|absolute_url}})
-
-# For latter
-
-If your LED doesn't turn on, check the connections (especially, the LED polarity). Now that we have tested the LED, let's make it blink at a 1 second interval:
-```
-import machine
-import time
-
-led = machine.Pin(0, machine.Pin.OUT)
-
-def blink():
-    while True:
-        led.on()
-        time.sleep(1)
-        led.off()
-        time.sleep(1)
-```
-
-In the above example, we are making the LED blink at a 1 second interval. In order to introduce a delay, we are using the `time` module. We are using the `sleep()` to introduce a delay in our program. The `sleep()` method requires an integer as an argument.
-
-Let's save the file (as led.py) and send it to the ESP8266 (via the WebREPL or ampy). Once the file is uploaded, it could be executed as follows:
-
-```
-import led
-led.blink()
-```
