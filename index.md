@@ -238,72 +238,72 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
             sleep(1)
         ```
 
-    3. The MicroPython terminals starts printing the UV index values. It is time to test it with a UV torchlight. Did the index values vary?
-    **Note:** <em>UV Torchlights can be harmful to the eyes. Care should be taken while handling it and do not make direct contact.</em>
+      3. The MicroPython terminals starts printing the UV index values. It is time to test it with a UV torchlight. Did the index values vary?
+      **Note:** <em>UV Torchlights can be harmful to the eyes. Care should be taken while handling it and do not make direct contact.</em>
 
-    4. Your ESP32 board is already connected to the internet. You can follow the network connection instructions from here. You can verify using the code snippet below. It should print out the IP address:
-      ```
-      >>> import network
-      >>> wlan = network.WLAN(network.STA_IF)
-      >>> wlan.ifconfig()
-      ('192.168.86.34', '255.255.255.0', '192.168.86.1', '192.168.86.1')
-      ```
+      4. Your ESP32 board is already connected to the internet. You can follow the network connection instructions from here. You can verify using the code snippet below. It should print out the IP address:
+          ```
+          >>> import network
+          >>> wlan = network.WLAN(network.STA_IF)
+          >>> wlan.ifconfig()
+          ('192.168.86.34', '255.255.255.0', '192.168.86.1', '192.168.86.1')
+          ```
 
-    5. Let's publish the UV index values to [Thingspeak](https://thingspeak.com/). Sign up for a free account.
+      5. Let's publish the UV index values to [Thingspeak](https://thingspeak.com/). Sign up for a free account.
 
-    6. Create a new channel to record your incoming data.
-      ![]({{"/images/thingspeak.png"|absolute_url}})
-    7. Assign a name to your channel and rename <em> Field 1 </em> to UV data.
-      ![]({{"/images/new_channel.png"|absolute_url}})
-    8. Make a note of your channel id from the landing page of your channel
-      ![]({{"/images/channel_id.png"|absolute_url}})
-    9. Make a note of your write API key.
-      ![]({{"/images/api_key.png"|absolute_url}})
-    10. Let's edit our UV sensor code sample to publish data to ThingSpeak. Make sure to use your ThingSpeak channel id and API key.
-      ```
-      import network
-      from time import sleep
-      from machine import Pin, I2C
-      from umqtt.simple import MQTTClient
-      import veml6070
+      6. Create a new channel to record your incoming data.
+        ![]({{"/images/thingspeak.png"|absolute_url}})
+      7. Assign a name to your channel and rename <em> Field 1 </em> to UV data.
+        ![]({{"/images/new_channel.png"|absolute_url}})
+      8. Make a note of your channel id from the landing page of your channel
+        ![]({{"/images/channel_id.png"|absolute_url}})
+      9. Make a note of your write API key.
+        ![]({{"/images/api_key.png"|absolute_url}})
+      10. Let's edit our UV sensor code sample to publish data to ThingSpeak. Make sure to use your ThingSpeak channel id and API key.
+        ```
+        import network
+        from time import sleep
+        from machine import Pin, I2C
+        from umqtt.simple import MQTTClient
+        import veml6070
 
-      i2c = I2C(scl=Pin(5), sda=Pin(4))
-      uv = veml6070.VEML6070(i2c)
+        i2c = I2C(scl=Pin(5), sda=Pin(4))
+        uv = veml6070.VEML6070(i2c)
 
-      SERVER = "mqtt.thingspeak.com"
-      client = MQTTClient("umqtt_client", SERVER)
+        SERVER = "mqtt.thingspeak.com"
+        client = MQTTClient("umqtt_client", SERVER)
 
-      CHANNEL_ID = "ID"
-      API_KEY = "KEY"
+        CHANNEL_ID = "ID"
+        API_KEY = "KEY"
 
-      topic = "channels/" + CHANNEL_ID + "/publish/" + API_KEY
+        topic = "channels/" + CHANNEL_ID + "/publish/" + API_KEY
 
-      def do_connect():
-          wlan = network.WLAN(network.STA_IF)
-          wlan.active(True)
-          if not wlan.isconnected():
-              print('connecting to network...')
-              wlan.connect('ssid', 'password')
-              while not wlan.isconnected():
-                  pass
-          print('network config:', wlan.ifconfig())
+        def do_connect():
+            wlan = network.WLAN(network.STA_IF)
+            wlan.active(True)
+            if not wlan.isconnected():
+                print('connecting to network...')
+                wlan.connect('ssid', 'password')
+                while not wlan.isconnected():
+                    pass
+            print('network config:', wlan.ifconfig())
 
-      do_connect()
-      while True:
-          uv_raw = uv.uv_raw
-          risk_level = uv.get_index(uv_raw)
-          print('Reading: ', uv_raw, ' | Risk Level: ', risk_level)
+        do_connect()
+        while True:
+            uv_raw = uv.uv_raw
+            risk_level = uv.get_index(uv_raw)
+            print('Reading: ', uv_raw, ' | Risk Level: ', risk_level)
 
-          payload = "field1=" + str(uv_raw)
-          client.connect()
-          client.publish(topic, payload)
-          client.disconnect()
-          sleep(10)
-      ```
+            payload = "field1=" + str(uv_raw)
+            client.connect()
+            client.publish(topic, payload)
+            client.disconnect()
+            sleep(10)
+        ```
 
     11. If everything was set correctly, you should be able to view your data on ThingSpeak (shown in the snapshot below).
 
-      ![]({{"/images/thing_speak.png"|absolute_url}})
+        ![]({{"/images/thing_speak.png"|absolute_url}})
 
 
 # Temperature/Humidity sensor
