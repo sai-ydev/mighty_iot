@@ -301,9 +301,9 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
             sleep(10)
         ```
 
-    11. If everything was set correctly, you should be able to view your data on ThingSpeak (shown in the snapshot below).
+        11. If everything was set correctly, you should be able to view your data on ThingSpeak (shown in the snapshot below).
 
-        ![]({{"/images/thing_speak.png"|absolute_url}})
+          ![]({{"/images/thing_speak.png"|absolute_url}})
 
 
 # Temperature/Humidity sensor
