@@ -270,10 +270,11 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
         ![]({{"/images/api_key.png"|absolute_url}})
       10. Let's edit our UV sensor code sample to publish data to ThingSpeak. Make sure to use your ThingSpeak channel id and API key.
         ```
-        from machine import I2C, Pin
-        import veml6070
-        from umqtt.simple import MQTTClient
+        import network
         from time import sleep
+        from machine import Pin, I2C
+        from umqtt.simple import MQTTClient
+        import veml6070
 
         i2c = I2C(scl=Pin(5), sda=Pin(4))
         uv = veml6070.VEML6070(i2c)
@@ -281,33 +282,32 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
         SERVER = "mqtt.thingspeak.com"
         client = MQTTClient("umqtt_client", SERVER)
 
-        CHANNEL_ID = ""
-        WRITE_API_KEY = ""
+        CHANNEL_ID = "968081"
+        API_KEY = "GS3WNS3ICFNQZA0M"
 
-        topic = "channels/" + CHANNEL_ID + "/publish/" + WRITE_API_KEY
+        topic = "channels/" + CHANNEL_ID + "/publish/" + API_KEY
 
+        def do_connect():
+            wlan = network.WLAN(network.STA_IF)
+            wlan.active(True)
+            if not wlan.isconnected():
+                print('connecting to network...')
+                wlan.connect('Hogwarts', 'Expectopatronum1987')
+                while not wlan.isconnected():
+                    pass
+            print('network config:', wlan.ifconfig())
+
+        do_connect()
         while True:
             uv_raw = uv.uv_raw
             risk_level = uv.get_index(uv_raw)
             print('Reading: ', uv_raw, ' | Risk Level: ', risk_level)
+
             payload = "field1=" + str(uv_raw)
-
-            try:
-              client.connect()
-            except:
-              pass
-
-            try:
-              client.publish(topic, payload)
-            except e:
-              print(e)
-
-            try:
-              client.disconnect()
-            except e:
-              print(e)
+            client.connect()
+            client.publish(topic, payload)
+            client.disconnect()
             sleep(10)
-
         ```
 
 
