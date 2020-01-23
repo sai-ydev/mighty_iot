@@ -337,6 +337,8 @@ The AM2320 drivers are loaded onto your ESP32. Let's take it for a spin:
 
 If there are problems reading the temperature from the sensor, check your connections and ensure that there is a pull-up resistor on the clock and data pins.
 
+**Exercise:** Create a new channel and upload the temperature and humidity as separate fields to ThingSpeak.
+
 # Online PyBoard
 
 [Micropython PyBoard](http://micropython.org/live/)
