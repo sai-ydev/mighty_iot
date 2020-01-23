@@ -282,8 +282,8 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
         SERVER = "mqtt.thingspeak.com"
         client = MQTTClient("umqtt_client", SERVER)
 
-        CHANNEL_ID = "968081"
-        API_KEY = "GS3WNS3ICFNQZA0M"
+        CHANNEL_ID = "ID"
+        API_KEY = "KEY"
 
         topic = "channels/" + CHANNEL_ID + "/publish/" + API_KEY
 
@@ -292,7 +292,7 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
             wlan.active(True)
             if not wlan.isconnected():
                 print('connecting to network...')
-                wlan.connect('Hogwarts', 'Expectopatronum1987')
+                wlan.connect('ssid', 'password')
                 while not wlan.isconnected():
                     pass
             print('network config:', wlan.ifconfig())
