@@ -314,13 +314,11 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
           ![]({{"/images/thing_speak.png"|absolute_url}})
 
 
-# Interfacing the Temperature/Humidity sensor
+# Temperature/Humidity sensor
 
-In this section, we will interface a DHT11 sensor to the ESP8266 and we will be using the [dht driver module](https://github.com/micropython/micropython/tree/master/drivers/dht). In the previous example, we uploaded to the spreadsheet only when the function `publish_values` is called. In this tutorial, we will review writing scripts that uploads to the cloud at regular interval.
+In this section, we will interface an [AM2320 sensor](https://akizukidenshi.com/download/ds/aosong/AM2320.pdf) to the ESP32 and we will be using the [modified AM2320 drivers](https://github.com/mcauser/micropython-am2320/blob/master/am2320.py). The AM2320 sensor needs to be interfaced to the ESP32 as shown in the figure below:
 
-The DHT11 sensor needs to be interfaced to the ESP8266 as shown in the figure below:
-
-![]({{"/images/DHT11_bb.png"|absolute_url}})
+![]({{"/images/AM2320_bb.png"|absolute_url}})
 
 Once the DHT drivers are uploaded to the ESP8266 module, the temperature and relative humidity can be measured as follows:
 
