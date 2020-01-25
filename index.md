@@ -260,6 +260,7 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
       9. Make a note of your write API key.
         ![]({{"/images/api_key.png"|absolute_url}})
       10. Let's edit our UV sensor code sample to publish data to ThingSpeak. Make sure to use your ThingSpeak channel id and API key.
+
           ```
           import network
           from time import sleep
