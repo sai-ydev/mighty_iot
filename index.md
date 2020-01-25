@@ -260,46 +260,46 @@ Your kit comes with a VEML6070 sensor. We will calculate the UV index and publis
       9. Make a note of your write API key.
         ![]({{"/images/api_key.png"|absolute_url}})
       10. Let's edit our UV sensor code sample to publish data to ThingSpeak. Make sure to use your ThingSpeak channel id and API key.
-        ```
-        import network
-        from time import sleep
-        from machine import Pin, I2C
-        from umqtt.simple import MQTTClient
-        import veml6070
+          ```
+          import network
+          from time import sleep
+          from machine import Pin, I2C
+          from umqtt.simple import MQTTClient
+          import veml6070
 
-        i2c = I2C(scl=Pin(5), sda=Pin(4))
-        uv = veml6070.VEML6070(i2c)
+          i2c = I2C(scl=Pin(5), sda=Pin(4))
+          uv = veml6070.VEML6070(i2c)
 
-        SERVER = "mqtt.thingspeak.com"
-        client = MQTTClient("umqtt_client", SERVER)
+          SERVER = "mqtt.thingspeak.com"
+          client = MQTTClient("umqtt_client", SERVER)
 
-        CHANNEL_ID = "ID"
-        API_KEY = "KEY"
+          CHANNEL_ID = "ID"
+          API_KEY = "KEY"
 
-        topic = "channels/" + CHANNEL_ID + "/publish/" + API_KEY
+          topic = "channels/" + CHANNEL_ID + "/publish/" + API_KEY
 
-        def do_connect():
-            wlan = network.WLAN(network.STA_IF)
-            wlan.active(True)
-            if not wlan.isconnected():
-                print('connecting to network...')
-                wlan.connect('ssid', 'password')
-                while not wlan.isconnected():
-                    pass
-            print('network config:', wlan.ifconfig())
+          def do_connect():
+              wlan = network.WLAN(network.STA_IF)
+              wlan.active(True)
+              if not wlan.isconnected():
+                  print('connecting to network...')
+                  wlan.connect('ssid', 'password')
+                  while not wlan.isconnected():
+                      pass
+              print('network config:', wlan.ifconfig())
 
-        do_connect()
-        while True:
-            uv_raw = uv.uv_raw
-            risk_level = uv.get_index(uv_raw)
-            print('Reading: ', uv_raw, ' | Risk Level: ', risk_level)
+          do_connect()
+          while True:
+              uv_raw = uv.uv_raw
+              risk_level = uv.get_index(uv_raw)
+              print('Reading: ', uv_raw, ' | Risk Level: ', risk_level)
 
-            payload = "field1=" + str(uv_raw)
-            client.connect()
-            client.publish(topic, payload)
-            client.disconnect()
-            sleep(10)
-        ```
+              payload = "field1=" + str(uv_raw)
+              client.connect()
+              client.publish(topic, payload)
+              client.disconnect()
+              sleep(10)
+          ```
 
 If everything was set correctly, you should be able to view your data on ThingSpeak (shown in the snapshot below).
 
