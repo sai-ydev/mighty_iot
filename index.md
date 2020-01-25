@@ -211,7 +211,7 @@ while True:
             val = i & 0xff
         else:
             val = 255 - (i & 0xff)
-        np[i] = (val, 0, 0)
+        np[0] = (val, 0, 0)
         np.write()
         time.sleep(0.1)
 ```
