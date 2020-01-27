@@ -24,13 +24,19 @@ Your workshop kit contains the following components:
 
 # Software setup
 
-You can just your text editor. For the sake of convenience, we will be using the [Thonny IDE](thonny.org). It is available for Windows, MAC and Linux Operating Systems.
+For the sake of convenience, we will be using the [Thonny IDE](thonny.org) to program in Micropython.
 
 **Mac Users**: You can install Thonny by using pip (shown below). You will also need to install CP210x drivers for MAC.
 ```
 pip3 install thonny
 ```
+**Linux Users**: Install Thonny by using the following command:
+```
+bash <(curl -s https://thonny.org/installer-for-linux)
+```
+After installation, add your user id to the `dialout` and `tty` groups.
 
+**Note**: You can program in MicroPython just using a text editor. You could even work off the Micropython Interpreter. Thonny makes your life easy by allowing you to load programs easily.
 
 Once you have installed Thonny, launch the IDE and configure it for ESP32 on MicroPython as follows:
 
